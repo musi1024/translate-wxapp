@@ -14,9 +14,13 @@ Page({
     curLang: {}
   },
   onLoad: function(options) {
-    this.setData({
-      query: options.query || ''
-    })
+    console.log(options)
+    if (options.query) {
+      this.setData({
+        query: options.query,
+      })
+      app.globalData.curLang = app.globalData.langList[options.langId]
+    }
   },
   onShow: function() {
     if (this.data.curLang.lang !== app.globalData.curLang.lang) {
@@ -30,7 +34,6 @@ Page({
     this.setData({
       'query': e.detail.value
     })
-    console.log(e)
     if (this.data.query.length > 0) {
       this.setData({
         'hideClearIcon': false
@@ -47,26 +50,23 @@ Page({
       hideClearIcon: true
     })
   },
-  onConfirm: function() {
-    if (this.data.query === this.data.oldQuery) {
-      return 
-    } else {
-      this.data.oldQuery = this.data.query
-    } 
+  onConfirm: function () {
+    if(!this.data.query) return
     translate(this.data.query, {
       from: 'auto',
       to: this.data.curLang.lang
     }).then(res => {
-        this.setData({
-          'result': res.trans_result
-        })
-        let history = wx.getStorageSync('history') || []
-        history.unshift({
-          query: this.data.query,
-          result: res.trans_result[0].dst
-        })
-        history.length = history.length > 15 ? 15 : history.length
-        wx.setStorageSync('history', history)
+      this.setData({
+        'result': res.trans_result
+      })
+      let history = wx.getStorageSync('history') || []
+      history.unshift({
+        query: this.data.query,
+        result: res.trans_result[0].dst,
+        langId: this.data.curLang.index
+      })
+      history.length = history.length > 15 ? 15 : history.length
+      wx.setStorageSync('history', history)
     })
   }
 })
