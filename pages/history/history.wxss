@@ -1,0 +1,22 @@
+.history-list {
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx;
+}
+.title {
+  font-size: 26rpx;
+  color: #8995a1;
+}
+.item {
+  border-top: 1px solid #ececec;
+  margin-top: 24rpx;
+  padding-top: 24rpx;
+}
+
+.item .query {
+  color: #8995a1;
+}
+
+.item .result {
+  margin-top: 16rpx;
+}
