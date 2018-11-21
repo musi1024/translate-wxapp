@@ -1,0 +1,33 @@
+<!--index.wxml-->
+<view class="container page-index">
+  <view class="change">
+    <navigator url="pages/change/change">
+      <text>到{{curLang.chs}}</text>
+      <text class="iconfont icon-down"></text>
+    </navigator>
+  </view>
+  <view class="input-area">
+    <view class="textarea-wrap">
+      <textarea 
+        placeholder='请输入需要翻译的文本' 
+        placeholder-style='color: #8995a1' 
+        bindinput='onInput' 
+        bindconfirm='onConfirm' 
+        bindblur='onConfirm' 
+        value="{{query}}">
+      </textarea>
+      <text class="iconfont icon-close" 
+        hidden="{{hideClearIcon}}"      
+        bindtap='onTapClose'></text>
+    </view>
+    <view class="text-area">
+      <view class="text-title">译文</view>
+      <view class="text-result" wx:for="{{result}}" wx:key="index">
+        <text selectable="true">{{item.dst}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="copyright">
+    <text>@ 2018 wechat：木四.</text>
+  </view>
+</view>
