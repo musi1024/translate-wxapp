@@ -7,13 +7,19 @@ Page({
     langList: app.globalData.langList
   },
   onShow: function() {
-    this.setData({ curLang: app.globalData.curLang })
+    this.setData({
+      curLang: app.globalData.curLang
+    })
   },
   onTapItem: function(e) {
     let langObj = e.currentTarget.dataset
-    this.setData({ curLang: langObj})
+    this.setData({
+      curLang: langObj
+    })
     wx.setStorageSync('curLang', langObj)
     app.globalData.curLang = langObj
-    wx.switchTab({ url: '/pages/index/index' })
+    wx.switchTab({
+      url: '/pages/index/index'
+    })
   }
 })
