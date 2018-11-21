@@ -1,8 +1,11 @@
 <!--history.wxml-->
 <scroll-view scroll-y class='container'>
   <view class='history-list'>
-    <view class='title'>历史记录</view>
-    <view class='item' wx:for='{{history}}' wx:key='index' bindtap='onTapItem' data-query='{{item.query}}'>
+    <view class='header'>
+      <view class='title'>历史记录</view>
+      <view class='deleteAll' bindtap='onClearAll'>清楚全部记录</view>
+    </view>
+    <view class='item' wx:for='{{history}}' wx:key='index' bindtap='onTapItem' data-query='{{item.query}}' data-langid="{{item.langId}}">
       <view class='query'>{{item.query}}</view>
       <view class='result'>{{item.result}}</view>
     </view>
