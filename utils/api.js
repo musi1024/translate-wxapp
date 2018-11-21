@@ -1,7 +1,5 @@
 import md5 from './md5.min.js'
-
-const appid = '20180802000191219'
-const key = '02LMiYALQE2vR4q0kaef'
+import {appid, key} from '../idkey'
 
 function translate(q, { from = 'auto', to = 'auto' } = { from: 'auto', to: 'auto' }) {
   return new Promise((resolve, reject) => {

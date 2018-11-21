@@ -1,5 +1,6 @@
 //index.js
 //获取应用实例
+import { translate } from '../../utils/api.js'
 const app = getApp()
 
 Page({
@@ -8,6 +9,11 @@ Page({
     hideClearIcon: true,
     result: [],
     curLang: {}
+  },
+  onShow: function() {
+    if(this.data.curLang.lang !== app.globalData.curLang.lang){
+      this.setData({ curLang: app.globalData.curLang })
+    }
   },
   onInput: function(e) {
     this.setData({ 'query': e.detail.value })
@@ -21,7 +27,10 @@ Page({
     this.setData({ query: '', hideClearIcon: true })
   },
   onConfirm: function() {
-    
+    if(!this.data.query) return
+    translate(this.data.query, {from: 'auto', to: this.data.curLang.lang}).then(res => {
+      this.setData({ 'result': res.trans_result })
+    })
   }
   
 })
