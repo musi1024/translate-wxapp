@@ -1,15 +1,19 @@
-//logs.js
-const util = require('../../utils/util.js')
+//change.js
+const app = getApp()
 
 Page({
   data: {
-    logs: []
+    curLang: {},
+    langList: app.globalData.langList
   },
-  onLoad: function () {
-    this.setData({
-      logs: (wx.getStorageSync('logs') || []).map(log => {
-        return util.formatTime(new Date(log))
-      })
-    })
+  onShow: function() {
+    this.setData({ curLang: app.globalData.curLang })
+  },
+  onTapItem: function(e) {
+    let langObj = e.currentTarget.dataset
+    this.setData({ curLang: langObj})
+    wx.setStorageSync('curLang', langObj)
+    app.globalData.curLang = langObj
+    wx.switchTab({ url: '/pages/index/index' })
   }
 })

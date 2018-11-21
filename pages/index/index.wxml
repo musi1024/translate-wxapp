@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container page-index">
   <view class="change">
-    <navigator url="pages/change/change">
+    <navigator url="/pages/change/change">
       <text>到{{curLang.chs}}</text>
       <text class="iconfont icon-down"></text>
     </navigator>
