@@ -12,7 +12,6 @@ Page({
     wx.reLaunch({
       url: `/pages/index/index?query=${e.currentTarget.dataset.query}&langId=${e.currentTarget.dataset.langid}`
     })
-    console.log(e.currentTarget.dataset.langid)
   },
   onClearAll: function() {
     let _this = this

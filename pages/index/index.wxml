@@ -8,7 +8,7 @@
   </view>
   <view class="input-area">
     <view class="textarea-wrap">
-      <textarea placeholder='请输入需要翻译的文本' placeholder-style='color: #8995a1' bindinput='onInput' bindconfirm='onConfirm' bindblur='onConfirm' value="{{query}}">
+      <textarea placeholder='请输入需要翻译的文本' placeholder-style='color: #8995a1' bindinput='onInput' bindconfirm='onConfirm'  value="{{query}}">
       </textarea>
       <text class="iconfont icon-close" hidden="{{hideClearIcon}}" bindtap='onTapClose'></text>
     </view>

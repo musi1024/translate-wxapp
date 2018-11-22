@@ -8,13 +8,11 @@ const app = getApp()
 Page({
   data: {
     query: '',
-    oldQuery: '',
     hideClearIcon: true,
     result: [],
     curLang: {}
   },
   onLoad: function(options) {
-    console.log(options)
     if (options.query) {
       this.setData({
         query: options.query,
